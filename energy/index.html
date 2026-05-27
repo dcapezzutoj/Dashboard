@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From the Furnace Floor — The American Energy Transition, by the Numbers</title>
+<style>
+  :root {
+    --paper: #ebe4d3;
+    --paper-deep: #dfd5be;
+    --paper-deeper: #d5cbb0;
+    --ink: #1c1814;
+    --iron: #2d2a26;
+    --furnace: #c1421a;
+    --ember: #8a2a14;
+    --brass: #a17c2f;
+    --smoke: #5a5854;
+    --slate: #3b4751;
+    --muted: #7a7368;
+    --moss: #5a6b3a;
+    --copper: #a66b3c;
+    --steel: #4a5560;
+    --rust-deep: #6e2818;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.5;
+    padding-bottom: 40px;
+  }
+
+  /* === BRAND BAR === */
+  .brand-bar {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8px 28px;
+    border-bottom: 2px solid var(--furnace);
+  }
+  .brand-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .brand-left { display: flex; align-items: center; gap: 12px; }
+  .glow-dot {
+    width: 8px; height: 8px; background: var(--furnace);
+    border-radius: 50%; box-shadow: 0 0 8px var(--furnace);
+  }
+  .brand-title {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 1.05rem; font-weight: 700;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  .brand-tagline {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    color: var(--muted); margin-top: 2px;
+  }
+  .brand-right {
+    font-family: 'Courier New', monospace;
+    font-size: 9px; color: var(--muted);
+    letter-spacing: 0.12em; text-align: right;
+  }
+  .brand-right .series-line { color: var(--brass); margin-top: 2px; }
+
+  /* === MASTHEAD === */
+  .masthead {
+    border-bottom: 4px solid var(--ink);
+    padding: 28px 28px 18px;
+    background: var(--paper);
+  }
+  .masthead-inner { max-width: 1400px; margin: 0 auto; }
+  .edition-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--smoke);
+    padding-bottom: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--smoke);
+    font-weight: 600;
+  }
+  .masthead h1 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    margin: 12px 0 8px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+  .masthead h1 .accent {
+    color: var(--furnace);
+    font-style: italic;
+  }
+  .deck {
+    font-style: italic;
+    color: var(--iron);
+    text-align: center;
+    max-width: 820px;
+    margin: 14px auto 4px;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+  .epigraph {
+    text-align: center;
+    max-width: 700px;
+    margin: 14px auto 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--paper-deep);
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    color: var(--iron);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .epigraph cite {
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--smoke);
+  }
+  .byline {
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  /* === TOGGLE CONTROLS === */
+  .controls {
+    max-width: 1400px;
+    margin: 16px auto 0;
+    padding: 0 28px;
+    text-align: center;
+  }
+  .toggle-group {
+    display: inline-flex;
+    background: var(--paper-deep);
+    border: 1px solid var(--smoke);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .toggle-btn {
+    padding: 8px 18px;
+    background: transparent;
+    border: none;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--iron);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .toggle-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .toggle-btn:not(.active):hover { background: var(--paper-deeper); }
+
+  /* === MAIN === */
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 28px;
+  }
+
+  /* === SECTION === */
+  section.dashboard-section { margin-bottom: 40px; }
+  .section-header-block {
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  .section-header-inner {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .section-num {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--furnace);
+    line-height: 1;
+    font-style: italic;
+  }
+  .section-title {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 1.55rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .section-subtitle {
+    font-style: italic;
+    color: var(--smoke);
+    font-size: 0.95rem;
+    margin-top: 2px;
+  }
+  .section-accent-bar {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--furnace);
+  }
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 14px;
+  }
+
+  /* === PANEL === */
+  .panel {
+    background: #f7f1e3;
+    border: 1px solid var(--paper-deep);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 2px 2px 0 rgba(28, 24, 20, 0.08);
+  }
+  .panel.color-blue { border-top: 3px solid var(--slate); }
+  .panel.color-red { border-top: 3px solid var(--ember); }
+  .panel.color-rust { border-top: 3px solid var(--furnace); }
+  .panel.color-gold { border-top: 3px solid var(--brass); }
+  .panel.color-green { border-top: 3px solid var(--moss); }
+  .panel.color-ink { border-top: 3px solid var(--ink); }
+  .panel.color-steel { border-top: 3px solid var(--steel); }
+  .panel.color-copper { border-top: 3px solid var(--copper); }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px dashed var(--paper-deep);
+    padding-bottom: 6px;
+  }
+  .panel-title {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .panel-current {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.5);
+    padding: 1px 6px;
+    white-space: nowrap;
+  }
+  .panel.color-red .panel-current { color: var(--ember); }
+  .panel.color-blue .panel-current { color: var(--slate); }
+  .panel.color-rust .panel-current { color: var(--furnace); }
+  .panel.color-gold .panel-current { color: var(--brass); }
+  .panel.color-green .panel-current { color: var(--moss); }
+  .panel.color-ink .panel-current { color: var(--ink); }
+  .panel.color-steel .panel-current { color: var(--steel); }
+  .panel.color-copper .panel-current { color: var(--copper); }
+
+  .chart-container {
+    height: 150px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .chart-container svg { width: 100%; height: 100%; display: block; }
+
+  .quality-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    padding: 1px 5px;
+    display: inline-block;
+    margin-top: -4px;
+  }
+  .quality-verified { background: rgba(90, 107, 58, 0.15); color: var(--moss); }
+  .quality-approx { background: rgba(166, 107, 60, 0.15); color: var(--copper); }
+  .quality-projected { background: rgba(138, 42, 20, 0.15); color: var(--ember); }
+
+  .read {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--iron);
+    background: var(--paper-deep);
+    padding: 8px 10px;
+    border-left: 3px solid var(--ink);
+  }
+  .panel.color-red .read { border-left-color: var(--ember); }
+  .panel.color-blue .read { border-left-color: var(--slate); }
+  .panel.color-rust .read { border-left-color: var(--furnace); }
+  .panel.color-gold .read { border-left-color: var(--brass); }
+  .panel.color-green .read { border-left-color: var(--moss); }
+  .panel.color-steel .read { border-left-color: var(--steel); }
+  .panel.color-copper .read { border-left-color: var(--copper); }
+  .read-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--smoke);
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    color: var(--iron);
+    letter-spacing: 0.05em;
+    padding: 0 2px;
+    margin-top: -2px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-swatch { width: 14px; height: 2px; }
+
+  /* === SYNTHESIS === */
+  .synthesis {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px 32px;
+    margin-top: 20px;
+    border-top: 4px solid var(--furnace);
+  }
+  .synthesis-inner { max-width: 1100px; margin: 0 auto; }
+  .synthesis-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--furnace);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .synthesis h2 {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-size: 2.4rem;
+    margin: 0 0 18px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .synthesis h2 .accent { color: var(--furnace); font-style: italic; }
+  .synthesis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .synthesis-grid p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .synthesis-grid strong { color: var(--furnace); font-weight: 700; }
+  .synthesis-coda {
+    border-top: 1px solid var(--brass);
+    margin-top: 24px;
+    padding-top: 18px;
+  }
+  .synthesis-coda p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #d4cab8;
+    margin: 0;
+    line-height: 1.55;
+  }
+  @media (max-width: 700px) {
+    .synthesis-grid { grid-template-columns: 1fr; }
+    .synthesis h2 { font-size: 1.8rem; }
+    .chart-container { height: 160px; }
+  }
+
+  /* === FOOTER === */
+  footer {
+    max-width: 1400px;
+    margin: 24px auto 0;
+    padding: 16px 28px 0;
+    border-top: 1px solid var(--smoke);
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--smoke);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+  }
+  .footer-line {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-note {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--paper-deep);
+  }
+  .quality-legend {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--paper-deep);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<!-- BRAND BAR -->
+<div class="brand-bar">
+  <div class="brand-bar-inner">
+    <div class="brand-left">
+      <div class="glow-dot"></div>
+      <div>
+        <div class="brand-title">THE RUSTBELT READER</div>
+        <div class="brand-tagline">PITTSBURGH · MEASURE THE PRESENT</div>
+      </div>
+    </div>
+    <div class="brand-right">
+      <div>ENERGY DASHBOARD — READER EDITION</div>
+      <div class="series-line">18 PANELS · THE PHYSICAL LAYER</div>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="edition-line">
+      <span>VOL. I · NO. 2 · ENERGY DASHBOARD</span>
+      <span>WEDNESDAY, MAY 27, 2026 · NO PAYWALL</span>
+    </div>
+    <h1>FROM THE FURNACE FLOOR:<br><span class="accent">The American Energy Transition, by the Numbers.</span></h1>
+    <p class="deck">
+      Eighteen panels on the physical layer beneath the grid. Demand, supply, bottlenecks, prime movers, prices.<br>
+      The furnace-orange line marks today. Every chart carries a plain-English read.
+    </p>
+    <div class="epigraph">
+      "Energy transitions are inherently protracted affairs."
+      <cite>VACLAV SMIL, ENERGY AND CIVILIZATION</cite>
+    </div>
+    <div class="byline">BY THE RUSTBELT READER · PITTSBURGH, PA</div>
+  </div>
+</header>
+
+<!-- TOGGLE -->
+<div class="controls">
+  <div class="toggle-group">
+    <button id="btn-full" class="toggle-btn active">FULL RANGE (1990–2030)</button>
+    <button id="btn-recent" class="toggle-btn">RECENT VIEW (2020–2030)</button>
+  </div>
+</div>
+
+<main>
+
+<section class="dashboard-section">
+  <div class="section-header-block">
+    <div class="section-header-inner">
+      <span class="section-num">§1</span>
+      <div>
+        <h2 class="section-title">DEMAND</h2>
+        <div class="section-subtitle">Where power is going — and the twenty-year flat line that just ended.</div>
+      </div>
+    </div>
+    <div class="section-accent-bar"></div>
+  </div>
+  <div class="panel-grid" id="grid-demand"></div>
+</section>
+
+<section class="dashboard-section">
+  <div class="section-header-block">
+    <div class="section-header-inner">
+      <span class="section-num">§2</span>
+      <div>
+        <h2 class="section-title">SUPPLY</h2>
+        <div class="section-subtitle">What is being built, what is leaving, and what is being financed.</div>
+      </div>
+    </div>
+    <div class="section-accent-bar"></div>
+  </div>
+  <div class="panel-grid" id="grid-supply"></div>
+</section>
+
+<section class="dashboard-section">
+  <div class="section-header-block">
+    <div class="section-header-inner">
+      <span class="section-num">§3</span>
+      <div>
+        <h2 class="section-title">BOTTLENECKS</h2>
+        <div class="section-subtitle">Why supply is slow — the queue, the lead times, the input costs.</div>
+      </div>
+    </div>
+    <div class="section-accent-bar"></div>
+  </div>
+  <div class="panel-grid" id="grid-bottlenecks"></div>
+</section>
+
+<section class="dashboard-section">
+  <div class="section-header-block">
+    <div class="section-header-inner">
+      <span class="section-num">§4</span>
+      <div>
+        <h2 class="section-title">PRIME MOVERS</h2>
+        <div class="section-subtitle">The physical layer beneath the grid — Smil's framework, operationalized.</div>
+      </div>
+    </div>
+    <div class="section-accent-bar"></div>
+  </div>
+  <div class="panel-grid" id="grid-primemovers"></div>
+</section>
+
+<section class="dashboard-section">
+  <div class="section-header-block">
+    <div class="section-header-inner">
+      <span class="section-num">§5</span>
+      <div>
+        <h2 class="section-title">MARKET SIGNALS</h2>
+        <div class="section-subtitle">What capacity auctions, rates, and gas prices are saying.</div>
+      </div>
+    </div>
+    <div class="section-accent-bar"></div>
+  </div>
+  <div class="panel-grid" id="grid-market"></div>
+</section>
+
+<!-- SYNTHESIS -->
+<section class="synthesis">
+  <div class="synthesis-inner">
+    <div class="synthesis-eyebrow">━ FROM THE FURNACE FLOOR</div>
+    <h2>What the panels say <span class="accent">together.</span></h2>
+    <div class="synthesis-grid">
+      <p>
+        <strong>§1 Demand</strong> shows the twenty-year flat line ending. Total generation grew at under 1% a year from 2008 to 2021. It broke out in 2024 and is now compounding above 3%. Data centers alone are projected to consume 600 TWh by 2030 — roughly the entire current generation of France.
+        <strong>§2 Supply</strong> shows what is being built against that demand. Coal retirements have slowed sharply. Net firm capacity has been falling for a decade. Utility capex is at record highs and rising, but the spending is going into transmission, distribution, and rate base — not new generation capacity.
+      </p>
+      <p>
+        <strong>§3 Bottlenecks</strong> shows why. Interconnection queues at 220+ GW. Heavy-duty gas turbine lead times at 4.5 years. Large power transformer lead times at 3+ years. Every input that goes into the grid has roughly doubled since 2019.
+        <strong>§4 Prime Movers</strong> shows the deeper constraint. Smil's framework: energy transitions are physical device transitions, not just fuel switches. Every prior transition took 50 to 100 years to reach majority share. The capital stock that produces electricity is built to last 30 to 65 years. The transition cannot be willed to happen faster than the underlying machines can be built and replaced.
+        <strong>§5 Market Signals</strong> shows the financial layer pricing this reality. PJM capacity auction prices jumped 9× in 2025-2026. Residential rates are climbing. Gas is the swing fuel and its price reflects the reality that it backs everything else.
+      </p>
+    </div>
+    <div class="synthesis-coda">
+      <p>
+        The structural read: the American energy transition is real, ongoing, and constrained — not by policy, not by capital, but by physics, lead times, and the slow turnover of capital stock. Demand is inflecting faster than supply can respond. Prices are starting to reflect what the physical layer has been signaling for years. Pittsburgh built the previous energy system. It knows how long these things actually take.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-line">
+    <div>© 2026 THE RUSTBELT READER · PITTSBURGH, PA</div>
+    <div>MEASURE THE PRESENT · AUDIT THE RECEIPTS</div>
+  </div>
+  <div class="footer-note">SOURCES: EIA ELECTRIC POWER ANNUAL · EIA MONTHLY ENERGY REVIEW · EIA AEO 2025 · NERC LTRA 2025 · PJM BRA SUMMARIES · MCKINSEY GLOBAL ENERGY PERSPECTIVE · BLOOMBERGNEF · LAWRENCE BERKELEY NATIONAL LAB · SMIL (2017)</div>
+  <div class="quality-legend">
+    <span><span class="quality-tag quality-verified">VERIFIED</span> &nbsp;Historical series anchored to primary data</span>
+    <span><span class="quality-tag quality-approx">APPROX</span> &nbsp;Directional pattern; values smoothed</span>
+    <span><span class="quality-tag quality-projected">PROJECTED</span> &nbsp;Forward years are forecasts</span>
+  </div>
+</footer>
+
+<script>
+// ============ COLORS & CONSTANTS ============
+const COLORS = {
+  ink: '#1c1814', iron: '#2d2a26', furnace: '#c1421a', ember: '#8a2a14',
+  brass: '#a17c2f', smoke: '#5a5854', slate: '#3b4751', moss: '#5a6b3a',
+  copper: '#a66b3c', steel: '#4a5560', muted: '#7a7368'
+};
+const TODAY = 2026.42; // late May 2026
+
+// Color shorthand for series
+const BLUE = COLORS.slate;
+const RED = COLORS.ember;
+const ORANGE = COLORS.furnace;
+const GREEN = COLORS.moss;
+const PURPLE = COLORS.copper;
+const SLATE = COLORS.steel;
+const TAN = COLORS.brass;
+
+// ============ PANEL DATA ============
+const PANELS = {
+
+  // === DEMAND ===
+  "US Electricity Generation (TWh)": {
+    color: "blue", current: "4,430 TWh",
+    quality: "verified",
+    domain: [2500, 5500],
+    series: [
+      { name: "Actual", color: BLUE, anchors: [
+        [1990,3037],[1995,3353],[2000,3802],[2005,4055],[2007,4156],[2010,4125],
+        [2012,4048],[2014,4093],[2016,4079],[2018,4178],[2019,4127],[2020,4007],
+        [2021,4116],[2022,4243],[2023,4180],[2024,4310],[2025,4430]
+      ]},
+      { name: "NERC High Forecast", color: RED, dashed: true, anchors: [
+        [2025,4430],[2026,4600],[2027,4760],[2028,4900],[2029,5020],[2030,5100]
+      ]},
+      { name: "EIA Reference", color: TAN, dashed: true, anchors: [
+        [2025,4430],[2026,4520],[2027,4600],[2028,4670],[2029,4720],[2030,4760]
+      ]}
+    ],
+    read: "Twenty years of flat consumption ended in 2024. Generation grew under 1% annually from 2008 to 2021. Now compounding above 3%. The structural break is the most important data point in US power markets.",
+    read12: "Up from 4,180 TWh in 2023 to 4,430 TWh in 2025 — adding 250 TWh of demand in two years. Forecast range diverges sharply: NERC sees 5,100 TWh by 2030, EIA Reference only 4,760 TWh. The gap is whether AI capex demand materializes."
+  },
+  "Data Center Power Demand (TWh)": {
+    color: "red", current: "225 TWh (5%)",
+    quality: "projected",
+    domain: [0, 700],
+    series: [{ color: RED, anchors: [
+      [2015,80],[2017,95],[2019,115],[2020,125],[2021,135],[2022,140],
+      [2023,147],[2024,180],[2025,225],[2026,290],[2027,370],[2028,450],
+      [2029,510],[2030,606]
+    ]}],
+    read: "From 80 TWh in 2015 to 606 TWh projected by 2030 — roughly the current annual generation of France. A new structural demand vertical is emerging, not from population or GDP but from compute. Worth roughly 12% of US power by 2030 on midpoint estimates.",
+    read12: "More than doubled from 180 TWh in 2024 to 225 TWh in 2025. McKinsey midpoint projects another 2.7× by 2030. The forecast curve is the single steepest demand projection in US infrastructure history."
+  },
+  "Peak vs Average US Demand (GW)": {
+    color: "steel", current: "Peak 785 / Avg 506",
+    quality: "verified",
+    domain: [350, 900],
+    series: [
+      { name: "Peak Demand", color: RED, anchors: [
+        [2005,720],[2007,740],[2010,710],[2012,710],[2015,720],[2018,750],
+        [2020,720],[2022,744],[2023,755],[2024,765],[2025,785],
+        [2026,805],[2028,850],[2030,895]
+      ]},
+      { name: "Average Demand", color: BLUE, anchors: [
+        [2005,463],[2007,475],[2010,471],[2012,462],[2015,465],[2018,477],
+        [2020,457],[2022,484],[2023,466],[2024,474],[2025,506],
+        [2026,525],[2028,560],[2030,580]
+      ]}
+    ],
+    read: "Peak demand stresses the grid; average demand stresses the fuel supply. The growing gap between the two is the reliability risk — the grid must be built for peak, but most of it sits idle most of the time.",
+    read12: "Peak demand reached 785 GW in summer 2025 — a new record. Average demand grew faster than peak in 2025, reflecting always-on data center load. NERC projects peak above 895 GW by 2030."
+  },
+
+  // === SUPPLY ===
+  "US Generation Mix (% of Total)": {
+    color: "blue", current: "Gas 42 / Coal 14 / Ren 25",
+    quality: "verified",
+    domain: [0, 55],
+    series: [
+      { name: "Coal", color: SLATE, anchors: [
+        [1990,52],[2000,52],[2005,50],[2010,45],[2012,37],[2015,33],
+        [2018,27],[2020,19],[2022,20],[2023,16],[2024,15],[2025,14],
+        [2026,13],[2028,12],[2030,11]
+      ]},
+      { name: "Natural Gas", color: BLUE, anchors: [
+        [1990,12],[2000,16],[2005,19],[2010,24],[2012,30],[2015,33],
+        [2018,35],[2019,38],[2020,40],[2022,40],[2023,43],[2024,43],
+        [2025,42],[2026,42],[2028,41],[2030,40]
+      ]},
+      { name: "Nuclear", color: PURPLE, anchors: [
+        [1990,20],[2000,20],[2010,20],[2015,20],[2020,20],[2022,19],
+        [2023,19],[2024,19],[2025,19],[2026,18],[2028,18],[2030,18]
+      ]},
+      { name: "Renewables", color: GREEN, anchors: [
+        [1990,11],[2000,9],[2005,9],[2010,10],[2012,12],[2015,13],
+        [2018,17],[2020,20],[2022,21],[2023,22],[2024,23],[2025,25],
+        [2026,27],[2028,29],[2030,31]
+      ]}
+    ],
+    read: "Coal share collapsed from 52% in 1990 to 14% in 2025. Gas filled most of the gap. Renewables now exceed coal. The transition is real, but gas is doing the actual work — providing both baseload and the firming for variable renewables.",
+    read12: "Coal share continues to decline but slowly — operational floor likely around 11-13% as DOE 202(c) orders and reliability-must-run designations keep plants online beyond planned retirement. Renewables are the fastest-growing source."
+  },
+  "Net Firm Capacity Change (GW)": {
+    color: "red", current: "-9 GW (2025)",
+    quality: "approx",
+    domain: [-18, 8],
+    series: [{ color: RED, anchors: [
+      [2014,-5],[2015,-4],[2016,0],[2017,0],[2018,-5],[2019,-4],
+      [2020,-5],[2021,-7],[2022,-10],[2023,-13],[2024,-17],[2025,-9],
+      [2026,-7],[2027,-3],[2028,0],[2029,3],[2030,6]
+    ]}],
+    read: "Firm capacity additions (gas + nuclear) minus fossil retirements. Net negative every year since 2017. The grid has been losing dispatchable capacity faster than it has been adding it. Solar and wind are growing but not firm. The reliability gap is now numerical, not theoretical.",
+    read12: "Bottomed at -17 GW in 2024 — the worst year on record. Recovering in 2025 as some retirements were postponed under reliability orders. Crossing positive territory not projected until 2028-2029, assuming current build queue clears."
+  },
+  "Coal Retirements: Planned vs Actual (GW)": {
+    color: "steel", current: "Plan 8 / Actual 2.6",
+    quality: "verified",
+    domain: [0, 20],
+    series: [
+      { name: "Planned (Form 860M)", color: SLATE, anchors: [
+        [2017,9],[2018,14],[2019,8],[2020,12],[2021,8],[2022,15],
+        [2023,13],[2024,10],[2025,8]
+      ]},
+      { name: "Actual", color: RED, anchors: [
+        [2017,9],[2018,13],[2019,8],[2020,11],[2021,7],[2022,14],
+        [2023,11],[2024,9],[2025,2.6]
+      ]}
+    ],
+    read: "Planned retirements tracked actual retirements through 2024. In 2025 the forecast broke. Plants scheduled to close stayed online under DOE 202(c) orders and reliability-must-run designations. The system needed them. Policy followed physics.",
+    read12: "2025 actual retirements at 2.6 GW versus 8 GW planned — a 68% miss. This is the cleanest single data point in the dashboard for the gap between transition timelines on paper and transition timelines in operating reality."
+  },
+  "US Utility Capex (IOU, $B)": {
+    color: "gold", current: "$208B (2025)",
+    quality: "verified",
+    domain: [0, 280],
+    series: [{ color: TAN, anchors: [
+      [2014,90],[2015,103],[2016,115],[2017,121],[2018,126],[2019,131],
+      [2020,131],[2021,138],[2022,153],[2023,153],[2024,178],
+      [2025,208],[2026,220],[2027,225],[2028,225],[2029,225],[2030,220]
+    ]}],
+    read: "Investor-owned utility capex has set a record every year since 2012. From $90B in 2014 to $208B in 2025. The spending shows up in residential rates because it expands the rate base on which utilities earn their allowed return.",
+    read12: "+16% in 2024, another +17% in 2025. The largest two-year jump on record. EEI projects $220B+ through 2030. Most of the spending is transmission, distribution, and grid hardening — not new generation."
+  },
+
+  // === BOTTLENECKS ===
+  "PJM Interconnection Queue (GW)": {
+    color: "rust", current: "220 GW (Apr 2026)",
+    quality: "verified",
+    domain: [0, 320],
+    series: [{ color: ORANGE, anchors: [
+      [2014,80],[2016,110],[2018,150],[2020,200],[2021,260],[2022,280],
+      [2023,290],[2024,260],[2025,180],[2026.0,63],[2026.3,220],
+      [2026.5,225],[2027,230],[2028,210],[2029,180],[2030,150]
+    ]}],
+    read: "From 80 GW in 2014 to 290 GW in 2023. PJM closed the queue entirely in 2022 because the backlog was unmanageable. Reopened April 2026 — 220 GW of new applications hit immediately. The queue is the binding constraint on how fast supply can respond to demand.",
+    read12: "Cleared down to 63 GW by early 2026 through queue reform. Reopened April 2026 with 220 GW of new applications. The clearing was temporary. The structural bottleneck remains."
+  },
+  "Equipment Lead Times (months)": {
+    color: "rust", current: "Gas 54 / Trans 40",
+    quality: "approx",
+    domain: [0, 60],
+    series: [
+      { name: "Heavy-Duty Gas Turbine", color: ORANGE, anchors: [
+        [2018,18],[2020,20],[2022,28],[2024,42],[2025,48],
+        [2026,54],[2028,48],[2030,40]
+      ]},
+      { name: "Large Power Transformer", color: RED, anchors: [
+        [2018,12],[2020,14],[2022,22],[2024,30],[2025,36],
+        [2026,40],[2028,36],[2030,30]
+      ]}
+    ],
+    read: "Heavy-duty gas turbine lead times tripled from 18 months in 2018 to 54 months in 2026. Large power transformers more than tripled. You cannot build a gas plant or upgrade transmission without these components. The physical supply chain is the binding constraint, not the financial one.",
+    read12: "Gas turbine lead times still extending — 48 to 54 months across 2025-2026. Transformers at 40 months. These are not policy constraints. They are factory capacity constraints. Resolution requires new manufacturing capacity that itself takes years to build."
+  },
+  "Grid Input Cost Index (2019=100)": {
+    color: "copper", current: "Cu 180 / Trans 177",
+    quality: "verified",
+    domain: [80, 240],
+    series: [
+      { name: "Copper", color: ORANGE, anchors: [
+        [2019,100],[2020,108],[2021,165],[2022,170],[2023,140],
+        [2024,155],[2025,180],[2026,225],[2028,210],[2030,200]
+      ]},
+      { name: "Grain-Oriented Electrical Steel", color: RED, anchors: [
+        [2019,100],[2020,110],[2021,182],[2022,175],[2023,165],
+        [2024,170],[2025,170],[2026,170],[2028,165],[2030,160]
+      ]},
+      { name: "Large Power Transformer", color: PURPLE, anchors: [
+        [2019,100],[2020,110],[2021,135],[2022,150],[2023,160],
+        [2024,170],[2025,177],[2026,180],[2028,175],[2030,170]
+      ]},
+      { name: "Construction Labor", color: BLUE, anchors: [
+        [2019,100],[2020,103],[2021,108],[2022,116],[2023,122],
+        [2024,127],[2025,131],[2026,135],[2028,142],[2030,148]
+      ]}
+    ],
+    read: "Every input that goes into the grid has roughly doubled since 2019. Copper, electrical steel, transformers, labor. The implication is that existing depreciated grid infrastructure is now worth substantially more than its book value. Replacement cost is the relevant frame, not historical cost.",
+    read12: "Copper accelerated again in 2025-2026 on electrification and AI infrastructure demand. Other input costs broadly flat to slowly rising. The differential matters: copper is the bottleneck within the bottleneck."
+  },
+
+  // === PRIME MOVERS ===
+  "US Generation by Prime Mover (%)": {
+    color: "steel", current: "Steam 33 / Gas 42 / Solar 7",
+    quality: "verified",
+    domain: [0, 80],
+    series: [
+      { name: "Steam Turbine", color: SLATE, anchors: [
+        [1950,73],[1970,82],[1990,79],[2000,71],[2010,65],[2015,52],
+        [2020,39],[2022,38],[2023,35],[2024,34],[2025,33],
+        [2026,32],[2028,28],[2030,25]
+      ]},
+      { name: "Gas Turbine", color: BLUE, anchors: [
+        [1950,1],[1970,4],[1990,8],[2000,12],[2010,24],[2015,33],
+        [2020,40],[2022,40],[2023,43],[2024,43],[2025,42],
+        [2026,42],[2028,41],[2030,40]
+      ]},
+      { name: "PV (Solid-State)", color: ORANGE, anchors: [
+        [2010,0.1],[2014,0.5],[2018,1.6],[2020,2.3],[2022,3.4],
+        [2024,5.2],[2025,7],[2026,9],[2028,13],[2030,17]
+      ]},
+      { name: "Wind Turbine", color: GREEN, anchors: [
+        [2000,0.2],[2005,0.5],[2010,2.3],[2015,4.7],[2020,8.4],
+        [2023,10.2],[2025,11],[2028,13],[2030,15]
+      ]}
+    ],
+    read: "Smil's framework: count the physical devices, not the fuels. Seventy years as a steam-turbine economy. Now the slow transition to gas turbines, solid-state photovoltaics, and wind turbines. The current 'energy transition' is fundamentally a prime mover transition — and prime mover transitions take generations.",
+    read12: "Steam turbines declining ~1 percentage point per year. Solar accelerating fastest. Gas turbine share peaked and is slowly receding. The transition is real but it is happening at the speed of capital stock turnover, which is measured in decades."
+  },
+  "Power Density by Prime Mover (W/m²)": {
+    color: "ink", current: "Static — see chart",
+    quality: "verified",
+    domain: [0, 2200],
+    isStatic: true,
+    bars: [
+      { label: "Coal Thermal", value: 1500, color: SLATE },
+      { label: "Gas Combined-Cycle", value: 1200, color: BLUE },
+      { label: "Nuclear", value: 800, color: PURPLE },
+      { label: "Data Center Load", value: 150, color: RED },
+      { label: "Solar PV", value: 12, color: ORANGE },
+      { label: "Wind", value: 2, color: GREEN }
+    ],
+    read: "Smil's published power densities, measured in watts per square meter of land. Coal and gas: 1,200-1,500 W/m². Nuclear: 800 W/m². Solar: 12 W/m². Wind: 2 W/m². The transition to renewables is a transition to lower-density energy production. More land is required for equivalent output. This is physics, not policy.",
+    read12: "Static reference. Data center load density (150 W/m²) is shown for scale — modern hyperscale facilities approach the power density of nuclear plants on the demand side, while the supply side has been shifting toward solar and wind at 100× lower density. The mismatch is structural."
+  },
+  "Prime Mover Capital Stock Lifetimes (years)": {
+    color: "copper", current: "Static — see chart",
+    quality: "approx",
+    domain: [0, 70],
+    isStatic: true,
+    bars: [
+      { label: "Nuclear (extended)", value: 65, color: PURPLE },
+      { label: "Hydro", value: 60, color: BLUE },
+      { label: "Coal Steam Plant", value: 50, color: SLATE },
+      { label: "Gas Combined-Cycle", value: 35, color: BLUE },
+      { label: "Solar PV", value: 28, color: ORANGE },
+      { label: "Wind Turbine", value: 22, color: GREEN }
+    ],
+    read: "Energy capital is built to last decades. Nuclear plants run 65+ years with license extensions. Coal plants 50 years. Gas combined-cycle 35 years. Solar 28 years. Wind 22 years. These lifetimes set the physical floor on how fast the generation mix can change — you cannot retire capital faster than its replacement can be built, and you cannot build it faster than the supply chain allows.",
+    read12: "Static reference. Worth noting: shorter-lived renewable assets imply more frequent capital reinvestment cycles. The transition does not finish with the initial buildout — it is a permanent state of higher capital turnover, which is one reason utility capex is structurally rising."
+  },
+  "Global Energy Transitions — Share of Primary (%)": {
+    color: "ink", current: "1800–2030",
+    quality: "verified",
+    domain: [0, 100],
+    historical: true,
+    series: [
+      { name: "Biomass/Wood", color: TAN, anchors: [
+        [1800,98],[1850,85],[1880,50],[1900,40],[1920,28],[1940,18],
+        [1960,10],[1980,9],[2000,9],[2020,9],[2030,8]
+      ]},
+      { name: "Coal", color: SLATE, anchors: [
+        [1800,2],[1850,14],[1880,46],[1900,52],[1920,62],[1940,55],
+        [1960,38],[1980,28],[2000,24],[2020,27],[2023,26],[2030,22]
+      ]},
+      { name: "Oil", color: RED, anchors: [
+        [1900,3],[1920,5],[1940,15],[1960,30],[1973,40],
+        [1980,42],[2000,36],[2020,31],[2023,30],[2030,28]
+      ]},
+      { name: "Natural Gas", color: BLUE, anchors: [
+        [1900,0],[1920,2],[1940,5],[1960,12],[1980,18],[2000,21],
+        [2020,24],[2023,24],[2030,23]
+      ]},
+      { name: "Modern Renewables", color: GREEN, anchors: [
+        [1980,0.1],[1990,0.2],[2000,0.4],[2010,1.5],[2015,2.5],
+        [2020,4.5],[2023,5.5],[2030,9]
+      ]}
+    ],
+    read: "Every prior energy transition took 50 to 100 years to reach majority share. Coal replaced wood from 1800 to 1900. Oil replaced coal from 1900 to 1970. Gas grew across the 20th century. Modern renewables have been scaling since 1980 and are projected at 9% of global primary energy by 2030. The historical pattern is the most important constraint on transition speed.",
+    read12: "Modern renewables grew from 4.5% in 2020 to 5.5% in 2023 — a 100 basis points in three years. Extrapolated forward, reaching 30-40% share would take another 30-40 years. The pattern is consistent with every prior transition. Speed is the question; direction is not."
+  },
+
+  // === MARKET SIGNALS ===
+  "PJM Capacity Auction Price ($/MW-day)": {
+    color: "red", current: "$330 (2026/27)",
+    quality: "verified",
+    domain: [0, 360],
+    series: [{ color: RED, anchors: [
+      [2014.5,125],[2015.5,120],[2016.5,60],[2017.5,165],[2018.5,165],
+      [2019.5,100],[2020.5,76],[2021.5,50],[2022.5,50],[2023.5,35],
+      [2024.5,29],[2025.5,270],[2026.5,330]
+    ]}],
+    read: "PJM Base Residual Auction clearing prices were collapsing through 2023-2024 — under $30/MW-day. The market was signaling capacity surplus. Then it inverted. The 2025 auction cleared at $270, the 2026 auction at $330 — 9× higher in two years. The market is now pricing scarcity.",
+    read12: "From $29 in 2024 to $330 in 2026. The single most violent price move in PJM's history. The signal is unambiguous: the system has shifted from capacity-surplus to capacity-short. Every utility executive in the RTO is now reading this number."
+  },
+  "US Residential Electricity Rate (¢/kWh)": {
+    color: "blue", current: "17.2 ¢/kWh",
+    quality: "verified",
+    domain: [9, 22],
+    series: [{ color: BLUE, anchors: [
+      [2000,8.2],[2002,8.4],[2004,8.9],[2006,10.4],[2008,11.3],[2010,11.5],
+      [2012,11.9],[2014,12.5],[2016,12.6],[2018,12.9],[2020,13.2],
+      [2022,15.1],[2023,15.8],[2024,16.4],[2025,17.2],
+      [2026,18.5],[2028,19.5],[2030,20.5]
+    ]}],
+    read: "From 8.2¢/kWh in 2000 to 17.2¢ in 2025 — more than doubled. The acceleration since 2022 reflects capacity costs and grid investments flowing through to retail rates. EIA projects continued increases through 2030. The household pays for the buildout.",
+    read12: "+10% over the last two years — from 15.1¢ in 2022 to 17.2¢ in 2025. Forecasts another 19% through 2030. The political layer of the energy transition is here: utility bills rising substantially in a period of broader inflation concern."
+  },
+  "Residential Rate by State Coal Tier (¢/kWh)": {
+    color: "steel", current: "Static — see chart",
+    quality: "verified",
+    domain: [0, 36],
+    isStatic: true,
+    bars: [
+      { label: "Coal-Heavy (>40% mix)", value: 12.3, color: SLATE },
+      { label: "Coal-Moderate (15-40%)", value: 14.7, color: BLUE },
+      { label: "US Average", value: 16.5, color: TAN },
+      { label: "Low Coal (<15%)", value: 18.4, color: ORANGE },
+      { label: "California", value: 34.3, color: RED }
+    ],
+    read: "States still running coal at scale charge their residents less. Coal-heavy states average 12.3¢/kWh. Low-coal states 18.4¢. California 34.3¢. The political economy of the transition has clear geographic winners and losers — and the political map of who pays more is becoming legible.",
+    read12: "Static reference. The dispersion across states is widening as transition costs accrue unevenly. Some confounding factors in the source data (population density, generation mix legacy, rate design) but the central pattern holds: coal share inversely correlates with residential rates."
+  },
+  "Henry Hub Natural Gas Price ($/MMBtu)": {
+    color: "rust", current: "$3.52",
+    quality: "verified",
+    domain: [0, 10],
+    series: [{ color: ORANGE, anchors: [
+      [2000,4.31],[2002,3.35],[2004,5.85],[2006,6.73],[2008,8.86],
+      [2010,4.37],[2012,2.75],[2014,4.37],[2016,2.52],[2018,3.15],
+      [2020,2.03],[2022,6.45],[2023,2.53],[2024,2.19],
+      [2025,3.52],[2026,3.50],[2027,4.60],[2028,4.30],[2030,4.10]
+    ]}],
+    read: "Henry Hub spot price. Gas became cheap with the shale revolution and has stayed cheap relative to its 2000s levels. But gas is the swing fuel — it backs coal retirement, it firms renewables, and it serves growing data center load. EIA projects $4+ by 2027 as LNG export demand and domestic power demand both rise.",
+    read12: "From $2.19 in 2024 to $3.52 in 2025 — a 60% move on demand growth and storage drawdown. EIA forecasts continued strength through 2030. If gas prices stay above $4 sustained, residential rates, industrial costs, and inflation all reaccelerate."
+  }
+};
+
+const SECTION_LAYOUT = {
+  "grid-demand": ["US Electricity Generation (TWh)", "Data Center Power Demand (TWh)", "Peak vs Average US Demand (GW)"],
+  "grid-supply": ["US Generation Mix (% of Total)", "Net Firm Capacity Change (GW)", "Coal Retirements: Planned vs Actual (GW)", "US Utility Capex (IOU, $B)"],
+  "grid-bottlenecks": ["PJM Interconnection Queue (GW)", "Equipment Lead Times (months)", "Grid Input Cost Index (2019=100)"],
+  "grid-primemovers": ["US Generation by Prime Mover (%)", "Power Density by Prime Mover (W/m²)", "Prime Mover Capital Stock Lifetimes (years)", "Global Energy Transitions — Share of Primary (%)"],
+  "grid-market": ["PJM Capacity Auction Price ($/MW-day)", "US Residential Electricity Rate (¢/kWh)", "Residential Rate by State Coal Tier (¢/kWh)", "Henry Hub Natural Gas Price ($/MMBtu)"]
+};
+
+let currentView = "full";
+
+// ============ CHART RENDERING ============
+function buildChart(panel, view) {
+  const width = 320, height = 150;
+  const padding = { top: 8, right: 8, bottom: 18, left: 36 };
+  const innerW = width - padding.left - padding.right;
+  const innerH = height - padding.top - padding.bottom;
+
+  // Handle static bar charts
+  if (panel.isStatic) {
+    return buildBarChart(panel, width, height, padding, innerW, innerH);
+  }
+
+  // X range determined by view + actual data extent of this panel's series
+  let xMin, xMax;
+  if (panel.historical) {
+    // Historical panel always shows full historical range
+    xMin = 1800; xMax = 2030;
+  } else {
+    // Find the actual data range across all series in this panel
+    const allAnchorXs = (panel.series || []).flatMap(s => s.anchors.map(a => a[0]));
+    const dataMinX = allAnchorXs.length > 0 ? Math.min(...allAnchorXs) : 1990;
+    const dataMaxX = allAnchorXs.length > 0 ? Math.max(...allAnchorXs) : 2030;
+    if (view === "full") {
+      // Use the actual data range, but cap at 1990 minimum so we never go further left than needed
+      xMin = Math.max(1990, dataMinX);
+      xMax = dataMaxX;
+    } else {
+      // Recent view: zoom to last ~10 years of data, but never go before actual data start
+      xMin = Math.max(2020, dataMinX);
+      xMax = dataMaxX;
+    }
+  }
+
+  function interp(anchors) {
+    // Interpolate values across the visible range; do NOT extend before first
+    // anchor or after last anchor (avoids false flat lines).
+    const series = [];
+    const step = (xMax - xMin) / 100;
+    const firstX = anchors[0][0];
+    const lastX = anchors[anchors.length-1][0];
+    // Make sure we include the exact endpoints
+    const xPoints = [];
+    for (let x = xMin; x <= xMax + step/2; x += step) xPoints.push(x);
+    if (firstX >= xMin && firstX <= xMax && !xPoints.includes(firstX)) xPoints.push(firstX);
+    if (lastX >= xMin && lastX <= xMax && !xPoints.includes(lastX)) xPoints.push(lastX);
+    xPoints.sort((a,b) => a-b);
+    for (const x of xPoints) {
+      // Skip points outside the actual data range — this is the key fix
+      if (x < firstX || x > lastX) continue;
+      let v = null;
+      for (let i = 0; i < anchors.length - 1; i++) {
+        const [x0, v0] = anchors[i];
+        const [x1, v1] = anchors[i+1];
+        if (x >= x0 && x <= x1) {
+          const t = (x1 === x0) ? 0 : (x - x0) / (x1 - x0);
+          v = v0 + t * (v1 - v0);
+          break;
+        }
+      }
+      // Edge case: exact endpoint matches
+      if (v === null && x === firstX) v = anchors[0][1];
+      if (v === null && x === lastX) v = anchors[anchors.length-1][1];
+      if (v !== null) series.push([x, v]);
+    }
+    return series;
+  }
+
+  // Build all series
+  const allSeries = (panel.series || []).map(s => ({
+    ...s,
+    points: interp(s.anchors)
+  }));
+
+  // Y range
+  let yMin, yMax;
+  if (view === "full" || panel.historical) {
+    yMin = panel.domain[0]; yMax = panel.domain[1];
+  } else {
+    // Auto-scale to recent values
+    const allVals = allSeries.flatMap(s => s.points.map(p => p[1]));
+    if (allVals.length > 0) {
+      yMin = Math.min(...allVals);
+      yMax = Math.max(...allVals);
+      const pad = (yMax - yMin) * 0.15 || 1;
+      yMin -= pad;
+      yMax += pad;
+      // Don't go below domain bottom if it's a meaningful floor
+      if (panel.domain[0] >= 0 && yMin < 0 && Math.min(...allVals) >= 0) yMin = 0;
+    } else {
+      yMin = panel.domain[0]; yMax = panel.domain[1];
+    }
+  }
+
+  function xs(x) { return padding.left + (x - xMin) / (xMax - xMin) * innerW; }
+  function ys(y) { return padding.top + (1 - (y - yMin) / (yMax - yMin)) * innerH; }
+
+  function pathD(pts) {
+    return pts.map((p,i) => `${i===0?'M':'L'}${xs(p[0]).toFixed(1)},${ys(p[1]).toFixed(1)}`).join(' ');
+  }
+
+  // Grid lines
+  const ySteps = 3;
+  let gridLines = '';
+  let yLabels = '';
+  for (let i = 0; i <= ySteps; i++) {
+    const yVal = yMin + (yMax - yMin) * (i / ySteps);
+    const yPx = ys(yVal);
+    gridLines += `<line x1="${padding.left}" y1="${yPx.toFixed(1)}" x2="${width - padding.right}" y2="${yPx.toFixed(1)}" stroke="#ddd" stroke-width="0.5" stroke-dasharray="2 4"/>`;
+    const fmt = (Math.abs(yVal) >= 1000) ? yVal.toFixed(0) :
+                (Math.abs(yVal) >= 10) ? yVal.toFixed(0) : yVal.toFixed(1);
+    yLabels += `<text x="${padding.left - 4}" y="${(yPx+3).toFixed(1)}" font-family="monospace" font-size="9" fill="${COLORS.muted}" text-anchor="end">${fmt}</text>`;
+  }
+
+  // X labels — generate ticks adaptively from each panel's actual range
+  let xLabels = '';
+  let xTicks;
+  if (panel.historical) {
+    xTicks = [1800, 1850, 1900, 1950, 2000, 2030];
+  } else {
+    // Adaptive ticks: pick a step that gives ~4-6 ticks across the range
+    const range = xMax - xMin;
+    let step;
+    if (range >= 30) step = 10;
+    else if (range >= 15) step = 5;
+    else if (range >= 8) step = 2;
+    else step = 1;
+    // Round start to nearest multiple of step
+    const start = Math.ceil(xMin / step) * step;
+    xTicks = [];
+    for (let t = start; t <= xMax + 0.5; t += step) xTicks.push(t);
+    // Always include the last data point if not already included and it's a round-ish year
+    const lastTickYear = Math.round(xMax);
+    if (!xTicks.includes(lastTickYear) && (xMax - xTicks[xTicks.length-1]) > step/2) {
+      xTicks.push(lastTickYear);
+    }
+  }
+  xTicks.forEach(x => {
+    if (x < xMin || x > xMax) return;
+    const xPx = xs(x);
+    xLabels += `<text x="${xPx.toFixed(1)}" y="${(height - 4).toFixed(1)}" font-family="monospace" font-size="9" fill="${COLORS.muted}" text-anchor="middle">${x}</text>`;
+  });
+
+  // Today line (only if within range)
+  let todayLine = '';
+  if (TODAY >= xMin && TODAY <= xMax) {
+    const todayX = xs(TODAY);
+    todayLine = `<line x1="${todayX.toFixed(1)}" y1="${padding.top}" x2="${todayX.toFixed(1)}" y2="${height - padding.bottom}" stroke="${COLORS.furnace}" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+  }
+
+  // Zero line if range crosses
+  let zeroLine = '';
+  if (yMin < 0 && yMax > 0) {
+    const zPx = ys(0);
+    zeroLine = `<line x1="${padding.left}" y1="${zPx.toFixed(1)}" x2="${width-padding.right}" y2="${zPx.toFixed(1)}" stroke="#666" stroke-width="0.7"/>`;
+  }
+
+  // Build path elements for each series
+  let pathElements = '';
+  let legendHtml = '';
+  allSeries.forEach((s, idx) => {
+    const stroke = s.color || COLORS.ink;
+    const dasharray = s.dashed ? 'stroke-dasharray="4 3"' : '';
+    pathElements += `<path d="${pathD(s.points)}" fill="none" stroke="${stroke}" stroke-width="1.7" ${dasharray}/>`;
+    if (s.name) {
+      const dashStyle = s.dashed ? 'border-bottom: 1.5px dashed; border-bottom-color: ' + stroke + '; height: 1px; background: transparent;' : 'background: ' + stroke;
+      legendHtml += `<span class="legend-item"><span class="legend-swatch" style="${dashStyle}"></span>${s.name}</span>`;
+    }
+  });
+
+  // Area fill (only for single-series panels)
+  let areaFill = '';
+  if (allSeries.length === 1 && !panel.historical && allSeries[0].points.length > 1) {
+    const s = allSeries[0];
+    const lastX = xs(s.points[s.points.length-1][0]);
+    const firstX = xs(s.points[0][0]);
+    const baseY = ys(Math.max(yMin, 0));
+    const areaD = `${pathD(s.points)} L${lastX.toFixed(1)},${baseY.toFixed(1)} L${firstX.toFixed(1)},${baseY.toFixed(1)} Z`;
+    areaFill = `<path d="${areaD}" fill="${s.color}" fill-opacity="0.12"/>`;
+  }
+
+  const svg = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">
+    ${gridLines}
+    ${zeroLine}
+    ${areaFill}
+    ${pathElements}
+    ${todayLine}
+    ${yLabels}
+    ${xLabels}
+  </svg>`;
+
+  return { svg, legendHtml };
+}
+
+function buildBarChart(panel, width, height, padding, innerW, innerH) {
+  const bars = panel.bars || [];
+  if (bars.length === 0) return { svg: '<svg></svg>', legendHtml: '' };
+
+  const maxVal = Math.max(...bars.map(b => b.value));
+  const barHeight = innerH / bars.length - 2;
+  const labelWidth = 110;
+  const chartLeft = padding.left + labelWidth;
+  const chartWidth = width - chartLeft - padding.right - 30;
+
+  let svg = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">`;
+  bars.forEach((b, i) => {
+    const y = padding.top + i * (barHeight + 2);
+    const barLen = (b.value / maxVal) * chartWidth;
+    svg += `<rect x="${chartLeft}" y="${y.toFixed(1)}" width="${barLen.toFixed(1)}" height="${barHeight.toFixed(1)}" fill="${b.color}" fill-opacity="0.85"/>`;
+    svg += `<text x="${chartLeft - 4}" y="${(y + barHeight/2 + 3).toFixed(1)}" font-family="Georgia, serif" font-size="9.5" fill="${COLORS.iron}" text-anchor="end">${b.label}</text>`;
+    // Value label
+    const valText = b.value >= 100 ? b.value.toFixed(0) : (b.value >= 10 ? b.value.toFixed(1) : b.value.toFixed(1));
+    svg += `<text x="${(chartLeft + barLen + 3).toFixed(1)}" y="${(y + barHeight/2 + 3).toFixed(1)}" font-family="monospace" font-size="9" fill="${COLORS.iron}" font-weight="700">${valText}</text>`;
+  });
+  svg += `</svg>`;
+
+  return { svg, legendHtml: '' };
+}
+
+function buildPanel(name, view) {
+  const p = PANELS[name];
+  if (!p) return '';
+  const readText = (view === 'recent' && p.read12) ? p.read12 : p.read;
+  const readLabel = view === 'recent' ? '━ THE RECENT READ' : '━ THE STRUCTURAL READ';
+
+  const result = buildChart(p, view);
+  const chartSvg = typeof result === 'string' ? result : result.svg;
+  const legendHtml = typeof result === 'string' ? '' : (result.legendHtml || '');
+
+  const qualityClass = p.quality === 'verified' ? 'quality-verified' :
+                       p.quality === 'projected' ? 'quality-projected' : 'quality-approx';
+  const qualityLabel = p.quality === 'verified' ? 'VERIFIED' :
+                       p.quality === 'projected' ? 'PROJECTED' : 'APPROX';
+
+  return `<div class="panel color-${p.color}">
+    <div class="panel-header">
+      <div class="panel-title">${name}</div>
+      <div class="panel-current">${p.current}</div>
+    </div>
+    <div class="chart-container">${chartSvg}</div>
+    ${legendHtml ? `<div class="legend">${legendHtml}</div>` : ''}
+    <span class="quality-tag ${qualityClass}">${qualityLabel}</span>
+    <div class="read">
+      <span class="read-label">${readLabel}</span>
+      ${readText}
+    </div>
+  </div>`;
+}
+
+function buildAll(view) {
+  for (const [gridId, panelNames] of Object.entries(SECTION_LAYOUT)) {
+    const el = document.getElementById(gridId);
+    if (!el) continue;
+    el.innerHTML = panelNames.map(name => buildPanel(name, view)).join('');
+  }
+}
+
+function setView(view) {
+  currentView = view;
+  document.getElementById('btn-full').classList.toggle('active', view === 'full');
+  document.getElementById('btn-recent').classList.toggle('active', view === 'recent');
+  buildAll(view);
+}
+
+document.getElementById('btn-full').addEventListener('click', () => setView('full'));
+document.getElementById('btn-recent').addEventListener('click', () => setView('recent'));
+
+buildAll('full');
+</script>
+
+</body>
+</html>
